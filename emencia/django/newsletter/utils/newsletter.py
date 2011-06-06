@@ -5,16 +5,26 @@ from django.core.urlresolvers import reverse
 from emencia.django.newsletter.models import Link
 
 
-def body_insertion(content, insertion, end=False):
+def body_insertion(content, insertion, end=False, insertion_id=None):
     """Insert an HTML content into the body HTML node"""
     if not content.startswith('<body'):
         content = '<body>%s</body>' % content
     soup = BeautifulSoup(content)
 
-    if end:
-        soup.body.append(insertion)
-    else:
-        soup.body.insert(0, insertion)
+    inserted = False
+
+    if insertion_id:
+        element = soup.find('', attrs={'id':insertion_id})
+        if element:
+            element.contents = []
+            element.append(insertion)
+            inserted = True
+
+    if not inserted:
+        if end:
+            soup.body.append(insertion)
+        else:
+            soup.body.insert(0, insertion)
     return soup.prettify()
 
 
