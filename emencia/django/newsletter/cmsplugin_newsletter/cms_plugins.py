@@ -19,7 +19,9 @@ class CMSSubscriptionFormPlugin(CMSPluginBase):
 
     def render(self, context, instance, placeholder):
         request = context['request']
-        if request.method == "POST" and (settings.FORM_NAME in request.POST.keys()):
+        form_name = u'%s_%s' % (settings.FORM_NAME, instance.mailing_list.id)
+
+        if request.method == "POST" and (form_name in request.POST.keys()):
             form = MailingListSubscriptionForm(data=request.POST)
             if form.is_valid():
                 form.save(instance.mailing_list)
@@ -29,7 +31,7 @@ class CMSSubscriptionFormPlugin(CMSPluginBase):
         context.update({
             'object': instance,
             'form': form,
-            'form_name': settings.FORM_NAME,
+            'form_name': form_name,
             'placeholder': placeholder,
         })
         return context
