@@ -99,6 +99,7 @@ class Contact(models.Model):
     email = models.EmailField(_('email'), unique=True)
     first_name = models.CharField(_('first name'), max_length=50, blank=True)
     last_name = models.CharField(_('last name'), max_length=50, blank=True)
+    note = models.TextField(_('personal note'), blank=True)
 
     subscriber = models.BooleanField(_('subscriber'), default=True)
     valid = models.BooleanField(_('valid email'), default=True)

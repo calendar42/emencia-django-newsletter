@@ -46,6 +46,15 @@ def view_mailinglist_subscribe(request, form_class, mailing_list_id=None):
             subscribed = True
     else:
         form = form_class()
+        
+        # Load initial form fields from GET parameters
+        for key in request.GET:
+            try:
+                form.fields[key].initial = request.GET[key]
+            except KeyError:
+                # Ignore unexpected parameters
+                pass
+                
 
     return render_to_response('newsletter/mailing_list_subscribe.html',
                               {'subscribed': subscribed,

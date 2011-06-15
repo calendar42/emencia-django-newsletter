@@ -30,7 +30,7 @@ class ContactAdmin(admin.ModelAdmin):
                     'valid', 'total_subscriptions', 'creation_date', 'related_object_admin')
     list_filter = ('subscriber', 'valid', 'tester', 'creation_date', 'modification_date')
     search_fields = ('email', 'first_name', 'last_name', 'tags')
-    fieldsets = ((None, {'fields': ('email', 'first_name', 'last_name')}),
+    fieldsets = ((None, {'fields': ('email', 'first_name', 'last_name', 'note')}),
                  (None, {'fields': ('tags',)}),
                  (_('Status'), {'fields': ('subscriber', 'valid', 'tester')}),
                  (_('Advanced'), {'fields': ('object_id', 'content_type'),

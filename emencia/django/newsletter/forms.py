@@ -17,7 +17,9 @@ class MailingListSubscriptionForm(forms.ModelForm):
     # of the mailing list because it will be cleaned with no
     # double.
 
-    email = forms.EmailField(label=_('Email'), max_length=75)
+    first_name = forms.CharField(required=False, widget=forms.TextInput({ "placeholder": "First name" })) 
+    last_name = forms.CharField(required=False, widget=forms.TextInput({ "placeholder": "Last name" })) 
+    email = forms.EmailField(label=_('Email'), max_length=75, widget=forms.TextInput({ "placeholder": "email@example.com" }))
 
     def save(self, mailing_list):
         data = self.cleaned_data
