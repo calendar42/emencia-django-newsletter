@@ -563,7 +563,7 @@ msgid "Import contacts from a Excel file."
 msgstr "Importez vos contacts depuis un fichier Excel."
 
 #: templates/newsletter/contact_import.html:32
-msgid "Columns are [email][last name][first name][tags]."
+msgid "Columns are [email][last name][first name][tags][note] [email][last name][first name][tags]."
 msgstr "Les colonnes sont [email][prénom][nom][tags]."
 
 #: templates/newsletter/contact_import.html:33
@@ -591,7 +591,7 @@ msgstr "Importez vos contacts depuis un fichier texte ou un fichier CSV."
 
 #: templates/newsletter/contact_import.html:55
 msgid ""
-"Columns are [email][last name][first name][tags], splitted by a dot coma."
+"Columns are [email][last name][first name][tags][note] [email][last name][first name][tags], splitted by a dot coma."
 msgstr ""
 "Les colonnes sont [email][prénom][nom][tags], séparées par un point virgule."
 

@@ -554,7 +554,7 @@ msgid "Import contacts from a Excel file."
 msgstr "Export contacts as VCard"
 
 #: templates/newsletter/contact_import.html:32
-msgid "Columns are [email][last name][first name][tags]."
+msgid "Columns are [email][last name][first name][tags][note] [email][last name][first name][tags]."
 msgstr ""
 
 #: templates/newsletter/contact_import.html:33
@@ -583,7 +583,7 @@ msgstr ""
 
 #: templates/newsletter/contact_import.html:55
 msgid ""
-"Columns are [email][last name][first name][tags], splitted by a dot coma."
+"Columns are [email][last name][first name][tags][note] [email][last name][first name][tags], splitted by a dot coma."
 msgstr ""
 
 #: templates/newsletter/contact_import.html:70

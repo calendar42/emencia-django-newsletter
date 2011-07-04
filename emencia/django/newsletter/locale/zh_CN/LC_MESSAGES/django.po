@@ -556,7 +556,7 @@ msgid "Import contacts from a Excel file."
 msgstr "以VCard导出联系人"
 
 #: templates/newsletter/contact_import.html:32
-msgid "Columns are [email][last name][first name][tags]."
+msgid "Columns are [email][last name][first name][tags][note] [email][last name][first name][tags]."
 msgstr "列表含[电子邮件] [姓氏] [名字] [标签]。"
 
 #: templates/newsletter/contact_import.html:33
@@ -584,7 +584,7 @@ msgstr "从文本文件或CSV文件导入联系人。"
 
 #: templates/newsletter/contact_import.html:55
 msgid ""
-"Columns are [email][last name][first name][tags], splitted by a dot coma."
+"Columns are [email][last name][first name][tags][note] [email][last name][first name][tags], splitted by a dot coma."
 msgstr "列表含[电子邮件] [姓氏] [名字] [标签]，由逗号分隔。"
 
 #: templates/newsletter/contact_import.html:70
