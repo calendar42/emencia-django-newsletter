@@ -15,7 +15,7 @@ from emencia.django.newsletter.models import Contact
 from emencia.django.newsletter.models import MailingList
 
 
-COLUMNS = ['email', 'first_name', 'last_name', 'tags']
+COLUMNS = ['email', 'first_name', 'last_name', 'tags', 'note']
 csv.register_dialect('edn', delimiter=';')
 
 
@@ -86,7 +86,10 @@ def text_contacts_import(stream, workgroups=[]):
     for contact_row in contact_reader:
         contact = {}
         for i in range(len(contact_row)):
-            contact[COLUMNS[i]] = contact_row[i]
+            try:
+                contact[COLUMNS[i]] = contact_row[i]
+            except IndexError:
+                break
         contacts.append(contact)
 
     return create_contacts(contacts, 'text', workgroups)
