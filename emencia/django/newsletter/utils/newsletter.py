@@ -3,7 +3,7 @@ from BeautifulSoup import BeautifulSoup
 from django.core.urlresolvers import reverse
 
 from emencia.django.newsletter.models import Link
-
+from emencia.django.newsletter.settings import LINK_DOMAIN_PREFIX
 
 def body_insertion(content, insertion, end=False, insertion_id=None):
     """Insert an HTML content into the body HTML node"""
@@ -42,7 +42,7 @@ def track_links(content, context):
             link_title = link_markup.get('title', link_href)
             link, created = Link.objects.get_or_create(url=link_href,
                                                        defaults={'title': link_title})
-            link_markup['href'] = 'http://%s%s' % (context['domain'], reverse('newsletter_newsletter_tracking_link',
+            link_markup['href'] = '%s%s%s' % (LINK_DOMAIN_PREFIX, context['domain'], reverse('newsletter_newsletter_tracking_link',
                                                                               args=[context['newsletter'].slug,
                                                                                     context['uidb36'], context['token'],
                                                                                     link.pk]))

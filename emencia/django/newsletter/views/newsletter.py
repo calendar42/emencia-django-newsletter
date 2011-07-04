@@ -14,6 +14,7 @@ from emencia.django.newsletter.utils.newsletter import body_insertion
 from emencia.django.newsletter.utils.newsletter import track_links
 from emencia.django.newsletter.utils.tokens import untokenize
 from emencia.django.newsletter.settings import TRACKING_LINKS
+from emencia.django.newsletter.settings import INCLUDE_UNSUBSCRIPTION
 
 
 def render_newsletter(request, slug, context):
@@ -26,8 +27,9 @@ def render_newsletter(request, slug, context):
     title = render_string(newsletter.title, context)
     if TRACKING_LINKS:
         content = track_links(content, context)
-    unsubscription = render_file('newsletter/newsletter_link_unsubscribe.html', context)
-    content = body_insertion(content, unsubscription, end=True)
+    if INCLUDE_UNSUBSCRIPTION:
+        unsubscription = render_file('newsletter/newsletter_link_unsubscribe.html', context)
+        content = body_insertion(content, unsubscription, end=True)
 
     return render_to_response('newsletter/newsletter_detail.html',
                               {'content': content,
@@ -51,6 +53,6 @@ def view_newsletter_contact(request, slug, uidb36, token):
                                         contact=contact,
                                         status=ContactMailingStatus.OPENED_ON_SITE)
     context = {'contact': contact,
-               'uidb36': uidb36, 'token': token}
+               'uidb36': uidb36, 'token': token, 'SITE_VERSION': True}
 
     return render_newsletter(request, slug, context)
