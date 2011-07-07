@@ -29,7 +29,7 @@ def render_newsletter(request, slug, context):
         content = track_links(content, context)
     if INCLUDE_UNSUBSCRIPTION:
         unsubscription = render_file('newsletter/newsletter_link_unsubscribe.html', context)
-        content = body_insertion(content, unsubscription, end=True)
+        content = body_insertion(content, unsubscription, end=True, insertion_id="unsubscribe-link")
 
     return render_to_response('newsletter/newsletter_detail.html',
                               {'content': content,
