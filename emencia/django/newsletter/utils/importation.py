@@ -33,10 +33,15 @@ def create_contact(contact_dict, workgroups=[]):
         defaults=contact_dict)
 
     if not created:
+        note = contact_dict.get('note')
+        if note:
+            contact.note = note
+            contact.save()
+
         new_tags = contact_dict.get('tags')
         if new_tags:
             Tag.objects.update_tags(contact, '%s, %s' % (contact.tags, new_tags))
-
+        
     for workgroup in workgroups:
         workgroup.contacts.add(contact)
 
